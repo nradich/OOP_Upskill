@@ -1,12 +1,13 @@
 class Point:
-    """Example class to work through fundamentals"""
-    def __init__(self, x, y):
+    """Example class to work through fundamentals/ Holds point inputs"""
+    def __init__(self, x:int, y:int):
         self.x =x
         self.y =y
 
     def fall_in_rectangle(self, lowleft:int, upright:int):
-        if lowleft < self.x < upright[0] \
-        and lowleft[1] < self.y < upright[1]:
+        """Takes an input and compares vs the original instance """
+        if lowleft < self.x < upright\
+        and lowleft < self.y < upright:
             return True
         else:
             return False
@@ -23,9 +24,9 @@ class Paint:
         self.buckets = buckets
         self.color = color
 
-Point1 = Point(10,20)
+Point1 = Point(10,11)
 
-print(Point1.x)
+print(Point1.fall_in_rectangle(3,12))
 
 first_color = Paint(3, "blue")
 
