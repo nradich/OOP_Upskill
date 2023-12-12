@@ -4,9 +4,17 @@ from random import randint
 
 myturtle = turtle.Turtle()
 
-myturtle.forward(12)
 
+myturtle.goto(50,75)
+myturtle.forward(120) # go r
+myturtle.left(90)
+myturtle.forward(200)
+myturtle.left(90)
+myturtle.forward(120)
+myturtle.left(90)
+myturtle.forward(200)
 
+turtle.done()
 
 class Point:
     """Example class to work through fundamentals/ Holds point inputs"""
