@@ -50,16 +50,19 @@ class Rectangle:
 class GuiRectangle(Rectangle):
     """Child of recentalge"""
     def draw(self, canvas):
+        horizontal_distance = self.point2.x - self.point1.x
+        vertical_distance = self.point2.y - self.point1.y
+        
         canvas.penup()
         canvas.goto(self.point1.x,self.point1.y)
         canvas.pendown()
-        canvas.forward(self.point1.x) 
+        canvas.forward(horizontal_distance) 
         canvas.left(90)
-        canvas.forward(200)
+        canvas.forward(vertical_distance)
         canvas.left(90)
-        canvas.forward(120)
+        canvas.forward(horizontal_distance)
         canvas.left(90)
-        canvas.forward(200)
+        canvas.forward(vertical_distance)
 
         turtle.done()
 
