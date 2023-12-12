@@ -2,19 +2,6 @@ import turtle
 from random import randint
 
 
-myturtle = turtle.Turtle()
-
-
-myturtle.goto(50,75)
-myturtle.forward(120) # go r
-myturtle.left(90)
-myturtle.forward(200)
-myturtle.left(90)
-myturtle.forward(120)
-myturtle.left(90)
-myturtle.forward(200)
-
-turtle.done()
 
 class Point:
     """Example class to work through fundamentals/ Holds point inputs"""
@@ -30,7 +17,7 @@ class Point:
         else:
             return False
         
-    def fall_in_rectangle(self, rectangle) -> bool:
+    def falls_in_rectangle(self, rectangle) -> bool:
         """Takes recetangle input and compares vs the original instance """
         if rectangle.point1.x < self.x \
         < rectangle.point2.x \
@@ -60,9 +47,36 @@ class Rectangle:
 
         return area
     
-rectangle = Rectangle(Point(randint(0, 9), randint(0, 9)), 
-              Point(randint(10, 19), randint(10, 19)))
- 
+class GuiRectangle(Rectangle):
+    """Child of recentalge"""
+    def draw(self, canvas):
+        canvas.penup()
+        canvas.goto(self.point1.x,self.point1.y)
+        canvas.pendown()
+        canvas.forward(self.point1.x) 
+        canvas.left(90)
+        canvas.forward(200)
+        canvas.left(90)
+        canvas.forward(120)
+        canvas.left(90)
+        canvas.forward(200)
+
+        turtle.done()
+
+        
+
+        
+    
+graph_rectangle = GuiRectangle(Point(randint(0, 400), randint(0, 400)), 
+              Point(randint(10, 400), randint(10, 400)))
+
+
+myturtle = turtle.Turtle()
+
+#transforming the rectangle to now be able to show in a graph 
+graph_rectangle.draw(canvas= myturtle)
+
+
 # # Print rectangle coordinates
 # print("Rectangle Coordinates: ",
 #       rectangle.point1.x, ",",
@@ -75,5 +89,5 @@ rectangle = Rectangle(Point(randint(0, 9), randint(0, 9)),
 # user_area = float(input("Guess rectangle area: "))
  
 # # Print out the game result
-# print("Your point was inside rectangle: ", user_point.fall_in_rectangle(rectangle))
+# print("Your point was inside rectangle: ", user_point.falls_in_rectangle(rectangle))
 # print("Your area was off by: ", rectangle.area() - user_area)
