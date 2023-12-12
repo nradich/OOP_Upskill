@@ -67,26 +67,29 @@ class Paint:
         else:
             price = 2.19
         return price * self.buckets 
+    
+class DiscountedPaint (Paint):
+    """Child of paint class """
+    
+    def discounted_price(self, discount_percentage :float) ->float :
+        new_price = self.total_price() * (discount_percentage/100)
+        return new_price
 
 Point1 = Point(10,20)
-
 #print(Point1.fall_in_rectangle([10,12], [15,23]))
 Point2 = Point(8,9)
 
-
 #print(Point(3,4).fall_in_rectangle([1,1], [6,6]))
-
 print(Point(3,4).distance_from_point(Point2.x,Point2.y))
 
-first_color = Paint(3, "white")
 
-print(first_color.buckets)
 
 print( House(4).paint_needed())
-print ( first_color.total_price())
 
 first_rectangle = Rectangle(Point(5,6), Point(7,9))
-
 first_rectangle = Rectangle(Point(1,1), Point(6,6))
 print(Point(3,4).fall_in_rectangle(first_rectangle))
 print(first_rectangle.area())
+
+first_color = DiscountedPaint(10, "red")
+print ( first_color.discounted_price(20))
